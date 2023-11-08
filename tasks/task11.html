@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 11</title>
+<style>
+  body {
+      text-align: center; /* Выравнивание текста и всего содержимого по центру */
+      background-color: #f0f0f0; /* светлый фон */
+      color: #333; /* темный цвет текста, но не черный */
+      font-family: Arial, sans-serif;
+      margin: 100;
+      padding: 0;
+    }
+</style>
+</head>
+<body>
+<h1>Страничка по заказу</h1>
+<form>
+    <label for="title">Заголовок:</label><br>
+    <input type="text" id="title" name="title"><br>
+    
+    <label for="image">Выберите изображение:</label><br>
+    <input type="radio" id="image1" name="image" value="image1" checked> Изображение 1<br>
+    <input type="radio" id="image2" name="image" value="image2"> Изображение 2<br>
+    <input type="radio" id="image3" name="image" value="image3"> Изображение 3<br>
+    <input type="radio" id="image4" name="image" value="image4"> Изображение 4<br>
+    
+    <label for="caption">Подпись:</label><br>
+    <input type="text" id="caption" name="caption"><br>
+    
+    <label for="bgColor">Цвет фона:</label><br>
+    <input type="color" id="bgColor" name="bgColor" value="#ffffff"><br>
+    
+    <label for="textColor">Цвет текста:</label><br>
+    <input type="color" id="textColor" name="textColor" value="#000000"><br>
+    
+    <input type="button" value="Show" onclick="showImage()">
+</form>
+<script>
+  function showImage() {
+      // Retrieve form values
+      var title = document.getElementById('title').value;
+      var imageName = document.querySelector('input[name="image"]:checked').value;
+      var caption = document.getElementById('caption').value;
+      var bgColor = document.getElementById('bgColor').value;
+      var textColor = document.getElementById('textColor').value;
+      
+      // Image paths, these should be replaced with actual paths to the images
+      var images = {
+          'image1': 'content/car1.jpg',
+          'image2': 'content/car2.jpg',
+          'image3': 'content/car3.jpg',
+          'image4': 'content/car4.jpg'
+      };
+      
+      // Create a new window and write the HTML content
+      var newWindow = window.open('', '', 'width=600,height=400');
+      newWindow.document.write('<html><head><title>' + title + '</title></head>');
+      newWindow.document.write('<body style="background-color:' + bgColor + '; color:' + textColor + ';">');
+      newWindow.document.write('<h1 style="text-align:center;">' + title + '</h1>');
+      newWindow.document.write('<div style="text-align:center;"><img src="' + images[imageName] + '" alt="Image"></div>');
+      newWindow.document.write('<p style="text-align:center;">' + caption + '</p>');
+      newWindow.document.close();
+  }
+  </script>
+</body>
+</html>

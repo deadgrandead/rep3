@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4</title>
+</head>
+<style>
+  body {
+    text-align: center; /* Выравнивание текста и всего содержимого по центру */
+    background-color: #f0f0f0; /* светлый фон */
+    color: #333; /* темный цвет текста, но не черный */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
+    margin: 20px 0; /* Добавляем отступ сверху и снизу для заголовка */
+  }
+  .slider {
+    position: relative;
+    max-width: 300px; /* Задаем максимальную ширину слайдера */
+    margin: auto; /* Выравниваем слайдер по центру */
+  }
+  .slide {
+    display: none; /* Сначала все слайды скрыты */
+  }
+  .slide.active {
+    display: block; /* Активный слайд отображается */
+  }
+  .slider-btn {
+    padding: 10px 20px; /* Паддинги для кнопки */
+    text-align: center; /* Текст по центру */
+    margin: 10px 0; /* Отступ сверху и снизу */
+    cursor: pointer; /* Курсор в виде указателя */
+    border: none; /* Убираем бордер */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+  }
+  /* Additional styles for centering the slide images */
+  .slide img {
+    display: block; /* Images are block level to apply margin */
+    margin: auto; /* Horizontal centering */
+    max-width: 100%; /* Ensure image is not larger than its container */
+    height: auto; /* Maintain aspect ratio */
+  }
+  /* To center the slider vertically */
+  .slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns children (slides) horizontally */
+    height: 100vh; /* Sets the slider's height to the full viewport height */
+  }
+</style>
+<body>
+<h2>Слайд-шоу:</h2>
+<div class="slider">
+  <div class="slide active">
+    <img src="content/hipo.gif" alt="Автомобиль 1">
+  </div>
+  <div class="slide">
+    <img src="content/shark.gif" alt="Автомобиль 2">
+  </div>
+  <div class="slide">
+    <img src="content/mammoth.gif" alt="Автомобиль 3">
+  </div>
+  <button class="slider-btn">Показать следующий</button>
+</div>
+
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+
+  document.querySelector('.slider-btn').addEventListener('click', () => {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + 1) % totalSlides;
+    slides[slideIndex].classList.add('active');
+  });
+</script>
+
+</body>
+</html>

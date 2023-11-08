@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 10</title>
+</head>
+<style>
+  body {
+      text-align: center; /* Выравнивание текста и всего содержимого по центру */
+      background-color: #f0f0f0; /* светлый фон */
+      color: #333; /* темный цвет текста, но не черный */
+      font-family: Arial, sans-serif;
+      margin: 100;
+      padding: 0;
+    }
+</style>
+<body>
+  <h1>Заполните анкету:</h1>
+  <form id="anketaForm">
+      <label for="lastname">Фамилия:</label>
+      <input type="text" id="lastname" required><br>
+
+      <label for="firstname">Имя:</label>
+      <input type="text" id="firstname" required><br>
+
+      <label for="middlename">Отчество:</label>
+      <input type="text" id="middlename" required><br>
+
+      <label for="birthdate">Год рождения:</label>
+      <input type="text" id="birthdate" required><br>
+
+      <label for="birthplace">Место рождения:</label>
+      <input type="text" id="birthplace" required><br>
+
+      <label for="favoriteactivity">Любимое занятие:</label>
+      <input type="text" id="favoriteactivity" required><br>
+
+      <label for="leastfavoriteactivity">Не любимое занятие:</label>
+      <input type="text" id="leastfavoriteactivity" required><br>
+
+      <input type="submit" value="Создать биографию">
+  </form>
+
+  <div id="biography"></div>
+
+  <script>
+      document.getElementById("anketaForm").addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const lastname = document.getElementById("lastname").value;
+          const firstname = document.getElementById("firstname").value;
+          const middlename = document.getElementById("middlename").value;
+          const birthdate = document.getElementById("birthdate").value;
+          const birthplace = document.getElementById("birthplace").value;
+          const favoriteactivity = document.getElementById("favoriteactivity").value;
+          const leastfavoriteactivity = document.getElementById("leastfavoriteactivity").value;
+
+          const story = `${firstname} ${middlename} ${lastname} родился в ${birthdate} году в городе ${birthplace}. `;
+          const interests = `Он/она любит ${favoriteactivity} и не любит ${leastfavoriteactivity}. `;
+
+          const biography = `
+              <h2>Биография:</h2>
+              <p>${story}</p>
+              <p>${interests}</p>
+          `;
+
+          const biographyWindow = window.open("", "Биография", "width=600,height=400");
+          biographyWindow.document.body.innerHTML = biography;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 8</title>
+</head>
+<style>
+  body {
+      text-align: center; /* Выравнивание текста и всего содержимого по центру */
+      background-color: #f0f0f0; /* светлый фон */
+      color: #333; /* темный цвет текста, но не черный */
+      font-family: Arial, sans-serif;
+      margin: 100;
+      padding: 0;
+    }
+</style>
+<body>
+
+  <h1>Расстояние от точки до начала координат</h1>
+  <p>Введите координаты точки:</p>
+  
+  <label for="x-coordinate">X координата:</label>
+  <input type="number" id="x-coordinate" name="x-coordinate">
+  <br><br>
+  
+  <label for="y-coordinate">Y координата:</label>
+  <input type="number" id="y-coordinate" name="y-coordinate">
+  <br><br>
+  
+  <button onclick="calculateDistance()">Вычислить расстояние</button>
+  <p id="distance-result"></p>
+  
+  <script>
+  function calculateDistance() {
+    // Get the x and y coordinates from the input fields
+    var x = document.getElementById('x-coordinate').value;
+    var y = document.getElementById('y-coordinate').value;
+    
+    // Parse the x and y coordinates to numbers
+    x = parseFloat(x);
+    y = parseFloat(y);
+    
+    // Calculate the distance using the Pythagorean theorem
+    var distance = Math.sqrt(x * x + y * y);
+    
+    // Display the result
+    document.getElementById('distance-result').textContent = "Расстояние: " + distance;
+  }
+  </script>
+  
+  </body>
+</html>

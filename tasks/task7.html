@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 7</title>
+</head>
+<style>
+  body {
+      text-align: center; /* Выравнивание текста и всего содержимого по центру */
+      background-color: #f0f0f0; /* светлый фон */
+      color: #333; /* темный цвет текста, но не черный */
+      font-family: Arial, sans-serif;
+      margin: 100;
+      padding: 0;
+    }
+</style>
+<body>
+
+  <h2>Введите дату своего рождения:</h2>
+  <input type="date" id="birthdate">
+  <button onclick="calculateDays()">Подтвердить</button>
+  <p id="result"></p>
+  
+  <script>
+  function calculateDays() {
+    // Get the birth date from the input
+    var birthdate = document.getElementById('birthdate').value;
+    if (!birthdate) {
+      document.getElementById('result').textContent = "Please enter your birthdate.";
+      return;
+    }
+    
+    // Parse the birth date and get the current date
+    var birthDate = new Date(birthdate);
+    var currentDate = new Date();
+    
+    // Calculate the difference in milliseconds
+    var differenceInMilliseconds = currentDate - birthDate;
+    
+    // Convert milliseconds to days (1 day = 24 * 60 * 60 * 1000 milliseconds)
+    var daysLived = Math.floor(differenceInMilliseconds / (24 * 60 * 60 * 1000));
+    
+    // Display the result
+    document.getElementById('result').textContent = "Вы прожили " + daysLived + " дней.";
+  }
+  </script>
+  
+  </body>
+</html>

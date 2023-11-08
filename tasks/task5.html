@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 5</title>
+</head>
+<style>
+  body {
+      text-align: center; /* Выравнивание текста и всего содержимого по центру */
+      background-color: #f0f0f0; /* светлый фон */
+      color: #333; /* темный цвет текста, но не черный */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+</style>
+<body>
+
+<h2>Калькулятор</h2>
+
+<!-- Input fields for numbers and operation -->
+<label for="number1">Введите первое число:</label>
+<input type="number" id="number1" name="number1">
+<br><br>
+
+<label for="number2">Введите второе число:</label>
+<input type="number" id="number2" name="number2">
+<br><br>
+
+<label for="operation">Выберите операцию:</label>
+<select id="operation" name="operation">
+  <option value="+">(+)</option>
+  <option value="-">(-)</option>
+  <option value="*">(*)</option>
+  <option value="/">(/)</option>
+</select>
+<br><br>
+
+<button onclick="performCalculation()">Вычислить</button>
+
+<p id="result"></p>
+
+<script>
+// Function to perform the calculation
+function performCalculation() {
+  var x = parseFloat(document.getElementById('number1').value);
+  var y = parseFloat(document.getElementById('number2').value);
+  var operation = document.getElementById('operation').value;
+  var result;
+
+  // Check the operation and perform it
+  switch(operation) {
+    case '+':
+      result = x + y;
+      break;
+    case '-':
+      result = x - y;
+      break;
+    case '*':
+      result = x * y;
+      break;
+    case '/':
+      // Check for division by zero
+      if(y === 0) {
+        alert('Ошибка: Деление на 0!');
+        return;
+      } else {
+        result = x / y;
+      }
+      break;
+    default:
+      alert('Ошибка: Несуществующая операция!');
+      return;
+  }
+
+  // Display the result
+  document.getElementById('result').textContent = "Результат: " + result;
+}
+</script>
+
+</body>
+</html>
